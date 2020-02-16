@@ -1,0 +1,140 @@
+---
+swagger: "2.0"
+info:
+  description: "APIs to send talk to sales data to backend"
+  version: "1.0.0"
+  title: "Talk to Sales API"
+  contact:
+    email: "pepper.tech@peppercontent.in"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "virtserver.swaggerhub.com"
+basePath: "/Pepper-Content/Talk_to_Sales/1.0.0"
+tags:
+- name: "active"
+  description: "Active APIs"
+schemes:
+- "https"
+paths:
+  /select-a-package:
+    post:
+      tags:
+      - "active"
+      summary: "Select a package service"
+      description: "When the user opts for select a package option to send data"
+      operationId: "sap"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "item"
+        description: "object containing the array of selected options"
+        required: true
+        schema:
+          $ref: "#/definitions/item"
+      responses:
+        "201":
+          description: "Operation successful"
+        "400":
+          description: "operation failed"
+        "401":
+          description: "Authorization error"
+        "403":
+          description: "Values array was empty or some parameters were missing"
+      x-swagger-router-controller: "Active"
+  /create-your-own:
+    post:
+      tags:
+      - "active"
+      summary: "Select a package service"
+      description: "When the user opts for select a package option to send data"
+      operationId: "cyo"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "item"
+        description: "object containing the array of selected options"
+        required: true
+        schema:
+          $ref: "#/definitions/item_1"
+      responses:
+        "201":
+          description: "Operation successful"
+        "400":
+          description: "operation failed"
+        "401":
+          description: "Authorization error"
+        "403":
+          description: "Values array was empty or some parameters were missing"
+      x-swagger-router-controller: "Active"
+definitions:
+  item:
+    type: "object"
+    properties:
+      values:
+        type: "array"
+        items:
+          $ref: "#/definitions/selectapackage_values"
+  item_1:
+    type: "object"
+    properties:
+      values:
+        type: "array"
+        items:
+          $ref: "#/definitions/createyourown_values"
+  selectapackage_values:
+    type: "object"
+    required:
+    - "email"
+    - "price"
+    - "quantity"
+    properties:
+      email:
+        type: "string"
+        format: "email"
+      bundle:
+        type: "string"
+        format: "Bundle code"
+      addon:
+        type: "string"
+        format: "Addon code"
+      quantity:
+        type: "string"
+        format: "number"
+      price:
+        type: "string"
+        format: "total price of that bundle/addon for the specified quantity"
+  createyourown_values:
+    type: "object"
+    required:
+    - "email"
+    - "genre"
+    - "language"
+    - "price"
+    - "quantity"
+    - "vertical"
+    properties:
+      email:
+        type: "string"
+        format: "email"
+      language:
+        type: "string"
+        format: "language"
+      genre:
+        type: "string"
+        format: "genre"
+      vertical:
+        type: "string"
+        format: "vertical"
+      quantity:
+        type: "string"
+        format: "number"
+      price:
+        type: "string"
+        format: "total price of that bundle/addon for the specified quantity"
