@@ -9,8 +9,8 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "virtserver.swaggerhub.com"
-basePath: "/Pepper-Content/Talk_to_Sales/1.0.0"
+host: "psc1aw5dga.execute-api.ap-south-1.amazonaws.com"
+basePath: "/dev"
 tags:
 - name: "active"
   description: "Active APIs"
